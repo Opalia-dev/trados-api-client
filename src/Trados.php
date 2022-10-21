@@ -4,7 +4,17 @@ namespace Opalia\TradosApiClient;
 use Monolog\Logger;
 use GuzzleHttp\Client;
 use Monolog\Handler\StreamHandler;
+use Opalia\TradosApiClient\Ressources\File;
+use Opalia\TradosApiClient\Ressources\Group;
+use Opalia\TradosApiClient\Ressources\Folder;
+use Opalia\TradosApiClient\Ressources\Account;
 use Opalia\TradosApiClient\Ressources\Project;
+use Opalia\TradosApiClient\Ressources\Customer;
+use Opalia\TradosApiClient\Ressources\Language;
+use Opalia\TradosApiClient\Ressources\PublicKeys;
+use Opalia\TradosApiClient\Ressources\CustomField;
+use Opalia\TradosApiClient\Ressources\PricingModel;
+use Opalia\TradosApiClient\Ressources\FileProcessingConfiguration;
 
 class Trados{
     private string $tokenProviderEndpoint = "https://sdl-prod.eu.auth0.com/oauth/token";
@@ -14,7 +24,17 @@ class Trados{
 
     private Client $client;
 
+    private Account $account;
+    private Customer $customer;
+    private CustomField $customField;
+    private File $file;
+    private FileProcessingConfiguration $fileProcessingConfiguration;
+    private Folder $folder;
+    private Group $group;
+    private Language $language;
+    private PricingModel $pricingModel;
     private Project $project;
+    private PublicKeys $publicKeys;
 
     private Logger $logger;
 
@@ -124,5 +144,85 @@ class Trados{
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * Get the value of account
+     */ 
+    public function getAccount():Account
+    {
+        return $this->account;
+    }
+
+    /**
+     * Get the value of customer
+     */ 
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
+     * Get the value of fileProcessingConfiguration
+     */ 
+    public function getFileProcessingConfiguration():FileProcessingConfiguration
+    {
+        return $this->fileProcessingConfiguration;
+    }
+
+    /**
+     * Get the value of folder
+     */ 
+    public function getFolder():Folder
+    {
+        return $this->folder;
+    }
+
+    /**
+     * Get the value of group
+     */ 
+    public function getGroup():Group
+    {
+        return $this->group;
+    }
+
+    /**
+     * Get the value of language
+     */ 
+    public function getLanguage():Language
+    {
+        return $this->language;
+    }
+
+    /**
+     * Get the value of pricingModel
+     */ 
+    public function getPricingModel():PricingModel
+    {
+        return $this->pricingModel;
+    }
+
+    /**
+     * Get the value of publicKeys
+     */ 
+    public function getPublicKeys():PublicKeys
+    {
+        return $this->publicKeys;
+    }
+
+    /**
+     * Get the value of file
+     */ 
+    public function getFile():File
+    {
+        return $this->file;
+    }
+
+    /**
+     * Get the value of customField
+     */ 
+    public function getCustomField():CustomField
+    {
+        return $this->customField;
     }
 }
