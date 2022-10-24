@@ -64,7 +64,7 @@ class Trados{
         $this->initRessources();
     }
 
-    public function __call($method, $args)
+    public function __call(string $method, array $args):mixed
     {
         if (\count($args) < 1) {
             throw new \InvalidArgumentException('Magic request methods require a URI and optional options array');
@@ -111,7 +111,7 @@ class Trados{
     /**
      * Get apiKey ressource
      */ 
-    public function getApikey()
+    public function getApikey():string
     {
         return $this->apiKey;
     }
@@ -119,7 +119,7 @@ class Trados{
     /**
      * Get apiEndpoint ressource
      */ 
-    public function getApiEndpoint()
+    public function getApiEndpoint():string
     {
         return $this->apiEndpoint;
     }
@@ -127,7 +127,7 @@ class Trados{
     /**
      * Get accountId ressource
      */ 
-    public function getAccountId()
+    public function getAccountId():string
     {
         return $this->accountId;
     }
@@ -135,7 +135,7 @@ class Trados{
     /**
      * Get tokenProviderEndpoint ressource
      */ 
-    public function getTokenProviderEndpoint()
+    public function getTokenProviderEndpoint():string
     {
         return $this->tokenProviderEndpoint;
     }
@@ -143,7 +143,7 @@ class Trados{
     /**
      * Get token ressource
      */ 
-    public function getToken()
+    public function getToken():string
     {
         return $this->token;
     }
@@ -151,7 +151,7 @@ class Trados{
     /**
      * Get project ressource
      */ 
-    public function getProject()
+    public function getProject():Project
     {
         return $this->project;
     }
@@ -167,7 +167,7 @@ class Trados{
     /**
      * Get customer ressource
      */ 
-    public function getCustomer()
+    public function getCustomer():Customer
     {
         return $this->customer;
     }
