@@ -55,11 +55,11 @@ class Trados{
 
         $this->getTokenFromProvider();
 
-        $this->client->setDefaultOption('headers',[
+        $this->client = new Client(['headers'=> [
             'Authorization' => $this->tokenType.' '.$this->token,
             'X-LC-Tenant' => $this->accountId,
             'Content-Type' => 'application/json'
-        ]);
+        ]]);
 
         $this->initRessources();
     }
