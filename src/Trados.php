@@ -49,13 +49,13 @@ class Trados{
         $this->logger = new Logger('[Trados]');
         //$this->logger->pushHandler(new StreamHandler('/log/trados.log', Logger::WARNING));
 
-        $this->client = new Client([
-            'base_uri' => $this->apiEndpoint
-        ]);
+        $this->client = new Client();
 
         $this->getTokenFromProvider();
 
-        $this->client = new Client(['headers'=> [
+        $this->client = new Client([
+            'base_uri' => $this->apiEndpoint,
+            'headers'=> [
             'Authorization' => $this->tokenType.' '.$this->token,
             'X-LC-Tenant' => $this->accountId,
             'Content-Type' => 'application/json'
