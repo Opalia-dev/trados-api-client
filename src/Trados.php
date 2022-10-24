@@ -73,7 +73,7 @@ class Trados{
         $uri = $args[0];
         $opts = $args[1] ?? [];
 
-        return  $this->client->request($method, $uri, $opts)->getBody();
+        return  json_decode($this->client->request($method, $uri, $opts)->getBody());
     }
 
     private function getTokenFromProvider(){
