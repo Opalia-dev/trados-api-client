@@ -9,9 +9,13 @@ Class LanguageProcessing{
     public function __construct(private Trados $client)
     {}
 
-    public function getRules(string $languageProcessingRuleId)
+    public function getRules(string $languageProcessingRuleId,string $fields = null)
     {
-        return $this->client->get('languageProcessingRules/'.$languageProcessingRuleId);
+        $params = [];
+        if($fields !==null){
+            $params['query']['fields'] = $fields;
+        }
+        return $this->client->get('languageProcessingRules/'.$languageProcessingRuleId,$params);
     }
 
     public function listRules()

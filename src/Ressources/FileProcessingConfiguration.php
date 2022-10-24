@@ -9,23 +9,54 @@ Class FileProcessingConfiguration{
     public function __construct(private Trados $client)
     {}
 
-    public function list()
+    public function list(string $fields = null,array $location = null, string $locationStrategy = null,int $skip = null,string $sort = null, int $top = null)
     {
-        return $this->client->get('file-processing-configurations');
+        $params = [];
+        if($fields !==null){
+            $params['query']['fields'] = $fields;
+        }
+        if($location!==null){
+            $params['query']['location']=$location;
+        }
+        if($locationStrategy!==null){
+            $params['query']['locationStrategy']=$locationStrategy;
+        }
+        if($skip!==null){
+            $params['query']['skip']=$skip;
+        }
+        if($sort!==null){
+            $params['query']['sort']=$sort;
+        }
+        if($top!==null){
+            $params['query']['top']=$top;
+        }
+        return $this->client->get('file-processing-configurations',$params);
     }
 
-    public function get(string $fileProcessingConfigurationId)
+    public function get(string $fileProcessingConfigurationId,string $fields = null)
     {
-        return $this->client->get('file-processing-configurations/'.$fileProcessingConfigurationId);
+        $params = [];
+        if($fields !==null){
+            $params['query']['fields'] = $fields;
+        }
+        return $this->client->get('file-processing-configurations/'.$fileProcessingConfigurationId,$params);
     }
 
-    public function listFileTypeSettings()
+    public function listFileTypeSettings(string $fields = null)
     {
-        return $this->client->get('file-processing-configurations/file-type-settings');
+        $params = [];
+        if($fields !==null){
+            $params['query']['fields'] = $fields;
+        }
+        return $this->client->get('file-processing-configurations/file-type-settings',$params);
     }
 
-    public function getFileTypeSettings(string $fileProcessingConfigurationId,string $fileTypeSettingId)
+    public function getFileTypeSettings(string $fileProcessingConfigurationId,string $fileTypeSettingId,string $fields = null)
     {
-        return $this->client->get('file-processing-configurations/'.$fileProcessingConfigurationId.'/file-type-settings/'.$fileTypeSettingId);
+        $params = [];
+        if($fields !==null){
+            $params['query']['fields'] = $fields;
+        }
+        return $this->client->get('file-processing-configurations/'.$fileProcessingConfigurationId.'/file-type-settings/'.$fileTypeSettingId,$params);
     }
 }

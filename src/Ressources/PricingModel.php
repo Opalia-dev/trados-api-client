@@ -9,9 +9,13 @@ Class PricingModel{
     public function __construct(private Trados $client)
     {}
 
-    public function get(string $pricingModelId)
+    public function get(string $pricingModelId,string $fields = null)
     {
-        return $this->client->get('pricing-models/'.$pricingModelId);
+        $params = [];
+        if($fields !==null){
+            $params['query']['fields'] = $fields;
+        }
+        return $this->client->get('pricing-models/'.$pricingModelId,$params);
     }
 
     public function list()

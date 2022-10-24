@@ -9,18 +9,33 @@ Class Folder{
     public function __construct(private Trados $client)
     {}
 
-    public function get(string $folderId)
+    public function get(string $folderId,string $fields = null)
     {
-        return $this->client->get('folders/'.$folderId);
+        $params = [];
+        if($fields !==null){
+            $params['query']['fields'] = $fields;
+        }
+        return $this->client->get('folders/'.$folderId,$params);
     }
 
-    public function getRoot()
+    public function getRoot(string $fields = null)
     {
-        return $this->client->get('folders/root');
+        $params = [];
+        if($fields !==null){
+            $params['query']['fields'] = $fields;
+        }
+        return $this->client->get('folders/root',$params);
     }
 
-    public function list()
+    public function list(string $fields = null,string $name = null)
     {
-        return $this->client->get('folders');
+        $params = [];
+        if($fields !==null){
+            $params['query']['fields'] = $fields;
+        }
+        if($name !==null){
+            $params['query']['name'] = $name;
+        }
+        return $this->client->get('folders',$params);
     }
 }

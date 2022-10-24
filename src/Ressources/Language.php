@@ -9,8 +9,18 @@ Class Language{
     public function __construct(private Trados $client)
     {}
 
-    public function list()
+    public function list(string $fields = null,string $languageCodes = null,string $type = null)
     {
-        return $this->client->get('languages');
+        $params = [];
+        if($fields !==null){
+            $params['query']['fields'] = $fields;
+        }
+        if($languageCodes !==null){
+            $params['query']['languageCodes'] = $languageCodes;
+        }
+        if($type !==null){
+            $params['query']['type'] = $type;
+        }
+        return $this->client->get('languages',$params);
     }
 }
