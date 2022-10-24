@@ -95,7 +95,17 @@ class Trados{
     }
 
     private function initRessources(){
+        $this->account = new Account($this);
+        $this->customer = new Customer($this);
+        $this->customField = new CustomField($this);
+        $this->file = new File($this);
+        $this->fileProcessingConfiguration = new FileProcessingConfiguration($this);
+        $this->folder = new Folder($this);
+        $this->group = new Group($this);
+        $this->language = new Language($this);
+        $this->pricingModel = new PricingModel($this);
         $this->project = new Project($this);
+        $this->publicKeys = new PublicKeys($this);
     }
 
     /**
