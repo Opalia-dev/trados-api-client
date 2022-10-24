@@ -99,7 +99,7 @@ class Trados{
     }
 
     /**
-     * Get the value of apiKey
+     * Get apiKey ressource
      */ 
     public function getApikey()
     {
@@ -107,7 +107,7 @@ class Trados{
     }
 
     /**
-     * Get the value of apiEndpoint
+     * Get apiEndpoint ressource
      */ 
     public function getApiEndpoint()
     {
@@ -115,7 +115,7 @@ class Trados{
     }
 
     /**
-     * Get the value of accountId
+     * Get accountId ressource
      */ 
     public function getAccountId()
     {
@@ -123,7 +123,7 @@ class Trados{
     }
 
     /**
-     * Get the value of tokenProviderEndpoint
+     * Get tokenProviderEndpoint ressource
      */ 
     public function getTokenProviderEndpoint()
     {
@@ -131,7 +131,7 @@ class Trados{
     }
 
     /**
-     * Get the value of token
+     * Get token ressource
      */ 
     public function getToken()
     {
@@ -139,7 +139,7 @@ class Trados{
     }
 
     /**
-     * Get the value of project
+     * Get project ressource
      */ 
     public function getProject()
     {
@@ -147,7 +147,7 @@ class Trados{
     }
 
     /**
-     * Get the value of account
+     * Get account ressource
      */ 
     public function getAccount():Account
     {
@@ -155,7 +155,7 @@ class Trados{
     }
 
     /**
-     * Get the value of customer
+     * Get customer ressource
      */ 
     public function getCustomer()
     {
@@ -163,7 +163,7 @@ class Trados{
     }
 
     /**
-     * Get the value of fileProcessingConfiguration
+     * Get fileProcessingConfiguration ressource
      */ 
     public function getFileProcessingConfiguration():FileProcessingConfiguration
     {
@@ -171,7 +171,7 @@ class Trados{
     }
 
     /**
-     * Get the value of folder
+     * Get folder ressource
      */ 
     public function getFolder():Folder
     {
@@ -179,7 +179,7 @@ class Trados{
     }
 
     /**
-     * Get the value of group
+     * Get group ressource
      */ 
     public function getGroup():Group
     {
@@ -187,7 +187,7 @@ class Trados{
     }
 
     /**
-     * Get the value of language
+     * Get language ressource
      */ 
     public function getLanguage():Language
     {
@@ -195,7 +195,7 @@ class Trados{
     }
 
     /**
-     * Get the value of pricingModel
+     * Get pricingModel ressource
      */ 
     public function getPricingModel():PricingModel
     {
@@ -203,7 +203,7 @@ class Trados{
     }
 
     /**
-     * Get the value of publicKeys
+     * Get publicKeys ressource
      */ 
     public function getPublicKeys():PublicKeys
     {
@@ -211,7 +211,7 @@ class Trados{
     }
 
     /**
-     * Get the value of file
+     * Get file ressource
      */ 
     public function getFile():File
     {
@@ -219,7 +219,7 @@ class Trados{
     }
 
     /**
-     * Get the value of customField
+     * Get customField ressource
      */ 
     public function getCustomField():CustomField
     {
