@@ -17,8 +17,8 @@ use Opalia\TradosApiClient\Ressources\PricingModel;
 use Opalia\TradosApiClient\Ressources\FileProcessingConfiguration;
 
 class Trados{
-    private string $token;
-    private string $tokenType;
+    private ?string $token = null;
+    private ?string $tokenType = null;
 
     private Client $client;
 
@@ -109,15 +109,23 @@ class Trados{
     }
 
     /**
-     * Get apiKey ressource
+     * Get clientId
      */ 
-    public function getApikey():string
+    public function getClientId():string
     {
-        return $this->apiKey;
+        return $this->clientId;
     }
 
     /**
-     * Get apiEndpoint ressource
+     * Get clientSecret
+     */ 
+    public function getClientSecret():string
+    {
+        return $this->clientSecret;
+    }
+
+    /**
+     * Get apiEndpoint
      */ 
     public function getApiEndpoint():string
     {
@@ -133,7 +141,7 @@ class Trados{
     }
 
     /**
-     * Get tokenProviderEndpoint ressource
+     * Get tokenProviderEndpoint
      */ 
     public function getTokenProviderEndpoint():string
     {
@@ -141,7 +149,7 @@ class Trados{
     }
 
     /**
-     * Get token ressource
+     * Get token
      */ 
     public function getToken():string
     {
