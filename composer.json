@@ -1,6 +1,6 @@
 {
     "name": "opalia/trados-api-client",
-    "description": "A client library for Trados Cloud API",
+    "description": "A client library for Trados Cloud API (RWS Language Cloud)",
     "type": "library",
     "license": "MIT",
     "autoload": {
