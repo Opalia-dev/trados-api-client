@@ -11,6 +11,6 @@ Class Account{
 
     public function list()
     {
-        return $this->client->get('/accounts');
+        return $this->client->get('accounts');
     }
 }

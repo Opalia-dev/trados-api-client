@@ -11,11 +11,11 @@ Class LanguageProcessing{
 
     public function getRules(string $languageProcessingRuleId)
     {
-        return $this->client->get('/languageProcessingRules/'.$languageProcessingRuleId);
+        return $this->client->get('languageProcessingRules/'.$languageProcessingRuleId);
     }
 
     public function listRules()
     {
-        return $this->client->get('/languageProcessingRules');
+        return $this->client->get('languageProcessingRules');
     }
 }

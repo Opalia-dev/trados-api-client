@@ -11,39 +11,39 @@ Class Project{
 
     public function list()
     {
-        return $this->client->get('/projects');
+        return $this->client->get('projects');
     }
 
     public function get(int $projectId, string $fields = null)
     {
         if($fields !==null){
-            return $this->client->get('/projects/'.$projectId,[
+            return $this->client->get('projects/'.$projectId,[
                 'query' => [
                     'fields' => $fields
                 ]
             ]);
         }
-        return $this->client->get('/projects/'.$projectId);
+        return $this->client->get('projects/'.$projectId);
     }
 
     public function delete(int $projectId)
     {
-        return $this->client->delete('/projects/'.$projectId);
+        return $this->client->delete('projects/'.$projectId);
     }
 
     public function start(int $projectId)
     {
-        return $this->client->put('/projects/'.$projectId.'/start');
+        return $this->client->put('projects/'.$projectId.'/start');
     }
 
     public function complete(int $projectId)
     {
-        return $this->client->put('/projects/'.$projectId.'/complete');
+        return $this->client->put('projects/'.$projectId.'/complete');
     }
 
     public function cancelFile(int $projectId,int $fileId)
     {
-        return $this->client->put('/projects/'.$projectId.'/files/'.$fileId.'/cancel');
+        return $this->client->put('projects/'.$projectId.'/files/'.$fileId.'/cancel');
     }
 
     public function create(array $body,string $fields = null)
@@ -55,24 +55,24 @@ Class Project{
                 'fields' => $fields
             ];
         }
-        return $this->client->post('/projects/create',$params);
+        return $this->client->post('projects/create',$params);
     }
 
     public function getConfig(int $projectId, string $fields = null)
     {
         if($fields !==null){
-            return $this->client->get('/projects/'.$projectId,[
+            return $this->client->get('projects/'.$projectId,[
                 'query' => [
                     'fields' => $fields
                 ]
             ]);
         }
-        return $this->client->get('/projects/'.$projectId.'/configuration');
+        return $this->client->get('projects/'.$projectId.'/configuration');
     }
 
     public function updateConfig(int $projectId, array $body)
     {
-        return $this->client->get('/projects/'.$projectId.'/configuration',['json'=>$body]);
+        return $this->client->get('projects/'.$projectId.'/configuration',['json'=>$body]);
     }
 
     public function getTasks(int $projectId, string $fields = null,array $location = null, string $locationStrategy = null,int $skip = null,string $sort = null, int $top = null)
@@ -96,6 +96,6 @@ Class Project{
         if($top!==null){
             $params['query']['top']=$top;
         }
-        return $this->client->get('/projects/'.$projectId.'/tasks',$params);
+        return $this->client->get('projects/'.$projectId.'/tasks',$params);
     }
 }

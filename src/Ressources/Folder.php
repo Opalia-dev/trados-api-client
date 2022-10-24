@@ -11,16 +11,16 @@ Class Folder{
 
     public function get(string $folderId)
     {
-        return $this->client->get('/folders/'.$folderId);
+        return $this->client->get('folders/'.$folderId);
     }
 
     public function getRoot()
     {
-        return $this->client->get('/folders/root');
+        return $this->client->get('folders/root');
     }
 
     public function list()
     {
-        return $this->client->get('/folders');
+        return $this->client->get('folders');
     }
 }

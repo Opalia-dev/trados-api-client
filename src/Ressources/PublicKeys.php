@@ -11,11 +11,11 @@ Class PublicKeys{
 
     public function get(string $kid)
     {
-        return $this->client->get('/.well-known/jwks.json/'.$kid);
+        return $this->client->get('.well-known/jwks.json/'.$kid);
     }
 
     public function list()
     {
-        return $this->client->get('/.well-known/jwks.json');
+        return $this->client->get('.well-known/jwks.json');
     }
 }
