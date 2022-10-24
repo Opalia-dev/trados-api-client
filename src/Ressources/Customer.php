@@ -11,11 +11,11 @@ Class Customer{
 
     public function get(string $customerId)
     {
-        return $this->client->get('/customers/'.$customerId);
+        return $this->client->get('customers/'.$customerId);
     }
 
     public function list()
     {
-        return $this->client->get('/customers');
+        return $this->client->get('customers');
     }
 }

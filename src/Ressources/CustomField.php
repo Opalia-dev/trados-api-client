@@ -11,11 +11,11 @@ Class CustomField{
 
     public function listDefinitions()
     {
-        return $this->client->get('/custom-field-definitions');
+        return $this->client->get('custom-field-definitions');
     }
 
     public function getDefinition(string $customFieldDefinitionId)
     {
-        return $this->client->get('/custom-field-definitions/'.$customFieldDefinitionId);
+        return $this->client->get('custom-field-definitions/'.$customFieldDefinitionId);
     }
 }

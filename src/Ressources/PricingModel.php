@@ -11,11 +11,11 @@ Class PricingModel{
 
     public function get(string $pricingModelId)
     {
-        return $this->client->get('/pricing-models/'.$pricingModelId);
+        return $this->client->get('pricing-models/'.$pricingModelId);
     }
 
     public function list()
     {
-        return $this->client->get('/pricing-models');
+        return $this->client->get('pricing-models');
     }
 }

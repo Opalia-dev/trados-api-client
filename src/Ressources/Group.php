@@ -11,11 +11,11 @@ Class Group{
 
     public function get(string $groupId)
     {
-        return $this->client->get('/groups/'.$groupId);
+        return $this->client->get('groups/'.$groupId);
     }
 
     public function list()
     {
-        return $this->client->get('/groups');
+        return $this->client->get('groups');
     }
 }

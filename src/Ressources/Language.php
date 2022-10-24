@@ -11,6 +11,6 @@ Class Language{
 
     public function list()
     {
-        return $this->client->get('/languages');
+        return $this->client->get('languages');
     }
 }

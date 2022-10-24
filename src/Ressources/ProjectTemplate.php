@@ -11,11 +11,11 @@ Class ProjectTemplate{
 
     public function get(string $projectTemplateId)
     {
-        return $this->client->get('/project-templates/'.$projectTemplateId);
+        return $this->client->get('project-templates/'.$projectTemplateId);
     }
 
     public function list()
     {
-        return $this->client->get('/project-templates');
+        return $this->client->get('project-templates');
     }
 }

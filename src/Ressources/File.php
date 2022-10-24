@@ -11,11 +11,11 @@ Class File{
 
     public function pollUploadZip(string $fileId)
     {
-        return $this->client->get('/files/'.$fileId);
+        return $this->client->get('files/'.$fileId);
     }
 
     public function uploadZip(string $file)
     {
-        return $this->client->post('/Files',['json'=>['file'=>$file]]);
+        return $this->client->post('Files',['json'=>['file'=>$file]]);
     }
 }

@@ -17,10 +17,8 @@ use Opalia\TradosApiClient\Ressources\PricingModel;
 use Opalia\TradosApiClient\Ressources\FileProcessingConfiguration;
 
 class Trados{
-    private string $tokenProviderEndpoint = "https://sdl-prod.eu.auth0.com/oauth/token";
-
-    private string $token;
-    private string $tokenType;
+    private ?string $token = null;
+    private ?string $tokenType = null;
 
     private Client $client;
 
@@ -39,9 +37,11 @@ class Trados{
     private Logger $logger;
 
     public function __construct(
-        private string $apiKey,
+        private string $clientId,
+        private string $clientSecret,
         private string $accountId,
-        private string $apiEndpoint = "https://lc-api.sdl.com/public-api/v1/"
+        private string $apiEndpoint = "https://lc-api.sdl.com/public-api/v1/",
+        private string $tokenProviderEndpoint = "https://sdl-prod.eu.auth0.com/oauth/token"
     ){
         if (!function_exists('curl_init') || !function_exists('curl_setopt')) {
             throw new \Exception("cURL support is required, but can't be found.");
@@ -55,16 +55,16 @@ class Trados{
 
         $this->getTokenFromProvider();
 
-        $this->client->setDefaultOption('headers',[
+        $this->client = new Client(['headers'=> [
             'Authorization' => $this->tokenType.' '.$this->token,
-            'X-LC-Tenant' => $accountId,
+            'X-LC-Tenant' => $this->accountId,
             'Content-Type' => 'application/json'
-        ]);
+        ]]);
 
         $this->initRessources();
     }
 
-    public function __call($method, $args)
+    public function __call(string $method, array $args):mixed
     {
         if (\count($args) < 1) {
             throw new \InvalidArgumentException('Magic request methods require a URI and optional options array');
@@ -73,7 +73,7 @@ class Trados{
         $uri = $args[0];
         $opts = $args[1] ?? [];
 
-        return  $this->client->request($method, $uri, $opts)->getBody();
+        return  json_decode($this->client->request($method, $uri, $opts)->getBody());
     }
 
     private function getTokenFromProvider(){
@@ -83,7 +83,7 @@ class Trados{
             ],
             'json' => [
                 "client_id" => $this->clientId,
-                "client_secret" => $this->apiKey,
+                "client_secret" => $this->clientSecret,
                 "grant_type" => "client_credentials",
                 "audience" =>"https://api.sdl.com"
             ]
@@ -95,59 +95,77 @@ class Trados{
     }
 
     private function initRessources(){
+        $this->account = new Account($this);
+        $this->customer = new Customer($this);
+        $this->customField = new CustomField($this);
+        $this->file = new File($this);
+        $this->fileProcessingConfiguration = new FileProcessingConfiguration($this);
+        $this->folder = new Folder($this);
+        $this->group = new Group($this);
+        $this->language = new Language($this);
+        $this->pricingModel = new PricingModel($this);
         $this->project = new Project($this);
+        $this->publicKeys = new PublicKeys($this);
     }
 
     /**
-     * Get the value of apiKey
+     * Get clientId
      */ 
-    public function getApikey()
+    public function getClientId():string
     {
-        return $this->apiKey;
+        return $this->clientId;
     }
 
     /**
-     * Get the value of apiEndpoint
+     * Get clientSecret
      */ 
-    public function getApiEndpoint()
+    public function getClientSecret():string
+    {
+        return $this->clientSecret;
+    }
+
+    /**
+     * Get apiEndpoint
+     */ 
+    public function getApiEndpoint():string
     {
         return $this->apiEndpoint;
     }
 
     /**
-     * Get the value of accountId
+     * Get accountId ressource
      */ 
-    public function getAccountId()
+    public function getAccountId():string
     {
         return $this->accountId;
     }
 
     /**
-     * Get the value of tokenProviderEndpoint
+     * Get tokenProviderEndpoint
      */ 
-    public function getTokenProviderEndpoint()
+    public function getTokenProviderEndpoint():string
     {
         return $this->tokenProviderEndpoint;
     }
 
     /**
-     * Get the value of token
+     * Get token
      */ 
-    public function getToken()
+    public function getToken():string
     {
         return $this->token;
     }
 
     /**
-     * Get the value of project
+     * Get project ressource
      */ 
-    public function getProject()
+    public function getProject():Project
     {
         return $this->project;
     }
 
     /**
-     * Get the value of account
+     * Get account ressource
      */ 
     public function getAccount():Account
     {
@@ -155,15 +173,15 @@ class Trados{
     }
 
     /**
-     * Get the value of customer
+     * Get customer ressource
      */ 
-    public function getCustomer()
+    public function getCustomer():Customer
     {
         return $this->customer;
     }
 
     /**
-     * Get the value of fileProcessingConfiguration
+     * Get fileProcessingConfiguration ressource
      */ 
     public function getFileProcessingConfiguration():FileProcessingConfiguration
     {
@@ -171,7 +189,7 @@ class Trados{
     }
 
     /**
-     * Get the value of folder
+     * Get folder ressource
      */ 
     public function getFolder():Folder
     {
@@ -179,7 +197,7 @@ class Trados{
     }
 
     /**
-     * Get the value of group
+     * Get group ressource
      */ 
     public function getGroup():Group
     {
@@ -187,7 +205,7 @@ class Trados{
     }
 
     /**
-     * Get the value of language
+     * Get language ressource
      */ 
     public function getLanguage():Language
     {
@@ -195,7 +213,7 @@ class Trados{
     }
 
     /**
-     * Get the value of pricingModel
+     * Get pricingModel ressource
      */ 
     public function getPricingModel():PricingModel
     {
@@ -203,7 +221,7 @@ class Trados{
     }
 
     /**
-     * Get the value of publicKeys
+     * Get publicKeys ressource
      */ 
     public function getPublicKeys():PublicKeys
     {
@@ -211,7 +229,7 @@ class Trados{
     }
 
     /**
-     * Get the value of file
+     * Get file ressource
      */ 
     public function getFile():File
     {
@@ -219,7 +237,7 @@ class Trados{
     }
 
     /**
-     * Get the value of customField
+     * Get customField ressource
      */ 
     public function getCustomField():CustomField
     {
