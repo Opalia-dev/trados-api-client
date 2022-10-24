@@ -17,8 +17,6 @@ use Opalia\TradosApiClient\Ressources\PricingModel;
 use Opalia\TradosApiClient\Ressources\FileProcessingConfiguration;
 
 class Trados{
-    private string $tokenProviderEndpoint = "https://sdl-prod.eu.auth0.com/oauth/token";
-
     private string $token;
     private string $tokenType;
 
@@ -39,9 +37,11 @@ class Trados{
     private Logger $logger;
 
     public function __construct(
-        private string $apiKey,
+        private string $clientId,
+        private string $clientSecret,
         private string $accountId,
-        private string $apiEndpoint = "https://lc-api.sdl.com/public-api/v1/"
+        private string $apiEndpoint = "https://lc-api.sdl.com/public-api/v1/",
+        private string $tokenProviderEndpoint = "https://sdl-prod.eu.auth0.com/oauth/token"
     ){
         if (!function_exists('curl_init') || !function_exists('curl_setopt')) {
             throw new \Exception("cURL support is required, but can't be found.");
@@ -57,7 +57,7 @@ class Trados{
 
         $this->client->setDefaultOption('headers',[
             'Authorization' => $this->tokenType.' '.$this->token,
-            'X-LC-Tenant' => $accountId,
+            'X-LC-Tenant' => $this->accountId,
             'Content-Type' => 'application/json'
         ]);
 
@@ -83,7 +83,7 @@ class Trados{
             ],
             'json' => [
                 "client_id" => $this->clientId,
-                "client_secret" => $this->apiKey,
+                "client_secret" => $this->clientSecret,
                 "grant_type" => "client_credentials",
                 "audience" =>"https://api.sdl.com"
             ]
