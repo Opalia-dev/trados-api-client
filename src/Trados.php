@@ -107,7 +107,7 @@ class Trados{
         $this->language = new Language($this);
         $this->pricingModel = new PricingModel($this);
         $this->project = new Project($this);
-        $this->projectTemplated = new ProjectTemplate($this);
+        $this->projectTemplate = new ProjectTemplate($this);
         $this->publicKeys = new PublicKeys($this);
     }
 
