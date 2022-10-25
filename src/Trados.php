@@ -14,6 +14,7 @@ use Opalia\TradosApiClient\Ressources\Language;
 use Opalia\TradosApiClient\Ressources\PublicKeys;
 use Opalia\TradosApiClient\Ressources\CustomField;
 use Opalia\TradosApiClient\Ressources\PricingModel;
+use Opalia\TradosApiClient\Ressources\ProjectTemplate;
 use Opalia\TradosApiClient\Ressources\FileProcessingConfiguration;
 
 class Trados{
@@ -32,6 +33,7 @@ class Trados{
     private Language $language;
     private PricingModel $pricingModel;
     private Project $project;
+    private ProjectTemplate $projectTemplate;
     private PublicKeys $publicKeys;
 
     private Logger $logger;
@@ -105,6 +107,7 @@ class Trados{
         $this->language = new Language($this);
         $this->pricingModel = new PricingModel($this);
         $this->project = new Project($this);
+        $this->projectTemplated = new ProjectTemplate($this);
         $this->publicKeys = new PublicKeys($this);
     }
 
@@ -242,5 +245,13 @@ class Trados{
     public function getCustomField():CustomField
     {
         return $this->customField;
+    }
+
+    /**
+     * Get the value of projectTemplate
+     */ 
+    public function getProjectTemplate():ProjectTemplate
+    {
+        return $this->projectTemplate;
     }
 }
