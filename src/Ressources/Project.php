@@ -55,7 +55,7 @@ Class Project{
                 'fields' => $fields
             ];
         }
-        return $this->client->post('projects/create',$params);
+        return $this->client->post('projects',$params);
     }
 
     public function getConfig(int $projectId, string $fields = null)
