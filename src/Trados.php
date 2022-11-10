@@ -12,10 +12,12 @@ use Opalia\TradosApiClient\Ressources\Project;
 use Opalia\TradosApiClient\Ressources\Customer;
 use Opalia\TradosApiClient\Ressources\Language;
 use Opalia\TradosApiClient\Ressources\PublicKeys;
+use Opalia\TradosApiClient\Ressources\SourceFile;
 use Opalia\TradosApiClient\Ressources\CustomField;
 use Opalia\TradosApiClient\Ressources\PricingModel;
 use Opalia\TradosApiClient\Ressources\ProjectTemplate;
 use Opalia\TradosApiClient\Ressources\FileProcessingConfiguration;
+use Opalia\TradosApiClient\Ressources\Workflow;
 
 class Trados{
     private ?string $token = null;
@@ -35,6 +37,8 @@ class Trados{
     private Project $project;
     private ProjectTemplate $projectTemplate;
     private PublicKeys $publicKeys;
+    private SourceFile $sourceFile;
+    private Workflow $workflow;
 
     private Logger $logger;
 
@@ -109,6 +113,8 @@ class Trados{
         $this->project = new Project($this);
         $this->projectTemplate = new ProjectTemplate($this);
         $this->publicKeys = new PublicKeys($this);
+        $this->sourceFile = new SourceFile($this);
+        $this->workflow = new Workflow($this);
     }
 
     /**
@@ -248,10 +254,26 @@ class Trados{
     }
 
     /**
-     * Get the value of projectTemplate
+     * Get projectTemplate resource
      */ 
     public function getProjectTemplate():ProjectTemplate
     {
         return $this->projectTemplate;
+    }
+
+    /**
+     * Get sourceFile resource
+     */ 
+    public function getSourceFile():SourceFile
+    {
+        return $this->sourceFile;
+    }
+
+    /**
+     * Get Workflow resource
+     */ 
+    public function getWorkflow():Workflow
+    {
+        return $this->workflow;
     }
 }
