@@ -8,6 +8,7 @@ use Opalia\TradosApiClient\Ressources\File;
 use Opalia\TradosApiClient\Ressources\Task;
 use Opalia\TradosApiClient\Ressources\User;
 use Opalia\TradosApiClient\Ressources\Group;
+use Opalia\TradosApiClient\Ressources\Quote;
 use Opalia\TradosApiClient\Ressources\Folder;
 use Opalia\TradosApiClient\Ressources\Account;
 use Opalia\TradosApiClient\Ressources\Project;
@@ -44,6 +45,7 @@ class Trados{
     private Project $project;
     private ProjectTemplate $projectTemplate;
     private PublicKeys $publicKeys;
+    private Quote $quote;
     private SourceFile $sourceFile;
     private TargetFile $targetFile;
     private Task $task;
@@ -127,6 +129,7 @@ class Trados{
         $this->project = new Project($this);
         $this->projectTemplate = new ProjectTemplate($this);
         $this->publicKeys = new PublicKeys($this);
+        $this->quote = new Quote($this);
         $this->sourceFile = new SourceFile($this);
         $this->targetFile = new TargetFile($this);
         $this->task = new Task($this);
@@ -352,5 +355,13 @@ class Trados{
     public function getTranslationEngine()
     {
         return $this->translationEngine;
+    }
+
+    /**
+     * Get the value of quote
+     */ 
+    public function getQuote()
+    {
+        return $this->quote;
     }
 }
