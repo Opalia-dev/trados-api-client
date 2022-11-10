@@ -22,6 +22,7 @@ use Opalia\TradosApiClient\Ressources\TQAProfile;
 use Opalia\TradosApiClient\Ressources\CustomField;
 use Opalia\TradosApiClient\Ressources\PricingModel;
 use Opalia\TradosApiClient\Ressources\ProjectTemplate;
+use Opalia\TradosApiClient\Ressources\TranslationEngine;
 use Opalia\TradosApiClient\Ressources\TranslationMemoryImport;
 use Opalia\TradosApiClient\Ressources\FileProcessingConfiguration;
 
@@ -48,6 +49,7 @@ class Trados{
     private Task $task;
     private TaskType $taskType;
     private TQAProfile $tqaProfile;
+    private TranslationEngine $translationEngine;
     private TranslationMemoryImport $translationMemoryImport;
     private User $user;
     private Workflow $workflow;
@@ -130,6 +132,7 @@ class Trados{
         $this->task = new Task($this);
         $this->taskType = new TaskType($this);
         $this->tqaProfile= new TQAProfile($this);
+        $this->translationEngine = new TranslationEngine($this);
         $this->translationMemoryImport = new TranslationMemoryImport($this);
         $this->user = new User($this);
         $this->workflow = new Workflow($this);
@@ -341,5 +344,13 @@ class Trados{
     public function getTqaProfile()
     {
         return $this->tqaProfile;
+    }
+
+    /**
+     * Get the value of translationEngine
+     */ 
+    public function getTranslationEngine()
+    {
+        return $this->translationEngine;
     }
 }
