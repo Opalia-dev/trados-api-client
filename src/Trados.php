@@ -15,6 +15,7 @@ use Opalia\TradosApiClient\Ressources\Language;
 use Opalia\TradosApiClient\Ressources\Workflow;
 use Opalia\TradosApiClient\Ressources\PublicKeys;
 use Opalia\TradosApiClient\Ressources\SourceFile;
+use Opalia\TradosApiClient\Ressources\TargetFile;
 use Opalia\TradosApiClient\Ressources\CustomField;
 use Opalia\TradosApiClient\Ressources\PricingModel;
 use Opalia\TradosApiClient\Ressources\ProjectTemplate;
@@ -40,6 +41,7 @@ class Trados{
     private ProjectTemplate $projectTemplate;
     private PublicKeys $publicKeys;
     private SourceFile $sourceFile;
+    private TargetFile $targetFile;
     private TranslationMemoryImport $translationMemoryImport;
     private User $user;
     private Workflow $workflow;
@@ -118,6 +120,7 @@ class Trados{
         $this->projectTemplate = new ProjectTemplate($this);
         $this->publicKeys = new PublicKeys($this);
         $this->sourceFile = new SourceFile($this);
+        $this->targetFile = new TargetFile($this);
         $this->translationMemoryImport = new TranslationMemoryImport($this);
         $this->user = new User($this);
         $this->workflow = new Workflow($this);
@@ -297,5 +300,13 @@ class Trados{
     public function getTranslationMemoryImport()
     {
         return $this->translationMemoryImport;
+    }
+
+    /**
+     * Get the value of targetFile
+     */ 
+    public function getTargetFile()
+    {
+        return $this->targetFile;
     }
 }
