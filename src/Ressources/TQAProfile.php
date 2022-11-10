@@ -15,7 +15,7 @@ Class TQAProfile{
         if($fields !==null){
             $params['query']['fields'] = $fields;
         }
-        return $this->client->get('tqa-Profiles/'.$profileId,$params);
+        return $this->client->get('tqa-profiles/'.$profileId,$params);
     }
 
     public function list(?string $fields = null,?array $location = null,?string $locationStrategy = null,?int $skip = null,?string $sort = null,?int $top = null)
@@ -39,6 +39,6 @@ Class TQAProfile{
         if($top!==null){
             $params['query']['top']=$top;
         }
-        return $this->client->get('tqa-Profiles');
+        return $this->client->get('tqa-profiles');
     }
 }
