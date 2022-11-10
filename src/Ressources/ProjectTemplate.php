@@ -43,6 +43,6 @@ Class ProjectTemplate{
         if($top!==null){
             $params['query']['top']=$top;
         }
-        return $this->client->get('project-templates');
+        return $this->client->get('project-templates',$params);
     }
 }
