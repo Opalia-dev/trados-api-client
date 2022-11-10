@@ -5,6 +5,7 @@ use Monolog\Logger;
 use GuzzleHttp\Client;
 use Monolog\Handler\StreamHandler;
 use Opalia\TradosApiClient\Ressources\File;
+use Opalia\TradosApiClient\Ressources\Task;
 use Opalia\TradosApiClient\Ressources\User;
 use Opalia\TradosApiClient\Ressources\Group;
 use Opalia\TradosApiClient\Ressources\Folder;
@@ -42,6 +43,7 @@ class Trados{
     private PublicKeys $publicKeys;
     private SourceFile $sourceFile;
     private TargetFile $targetFile;
+    private Task $task;
     private TranslationMemoryImport $translationMemoryImport;
     private User $user;
     private Workflow $workflow;
@@ -121,6 +123,7 @@ class Trados{
         $this->publicKeys = new PublicKeys($this);
         $this->sourceFile = new SourceFile($this);
         $this->targetFile = new TargetFile($this);
+        $this->task = new Task($this);
         $this->translationMemoryImport = new TranslationMemoryImport($this);
         $this->user = new User($this);
         $this->workflow = new Workflow($this);
@@ -308,5 +311,13 @@ class Trados{
     public function getTargetFile()
     {
         return $this->targetFile;
+    }
+
+    /**
+     * Get the value of task
+     */ 
+    public function getTask()
+    {
+        return $this->task;
     }
 }
