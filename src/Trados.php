@@ -5,19 +5,20 @@ use Monolog\Logger;
 use GuzzleHttp\Client;
 use Monolog\Handler\StreamHandler;
 use Opalia\TradosApiClient\Ressources\File;
+use Opalia\TradosApiClient\Ressources\User;
 use Opalia\TradosApiClient\Ressources\Group;
 use Opalia\TradosApiClient\Ressources\Folder;
 use Opalia\TradosApiClient\Ressources\Account;
 use Opalia\TradosApiClient\Ressources\Project;
 use Opalia\TradosApiClient\Ressources\Customer;
 use Opalia\TradosApiClient\Ressources\Language;
+use Opalia\TradosApiClient\Ressources\Workflow;
 use Opalia\TradosApiClient\Ressources\PublicKeys;
 use Opalia\TradosApiClient\Ressources\SourceFile;
 use Opalia\TradosApiClient\Ressources\CustomField;
 use Opalia\TradosApiClient\Ressources\PricingModel;
 use Opalia\TradosApiClient\Ressources\ProjectTemplate;
 use Opalia\TradosApiClient\Ressources\FileProcessingConfiguration;
-use Opalia\TradosApiClient\Ressources\Workflow;
 
 class Trados{
     private ?string $token = null;
@@ -38,6 +39,7 @@ class Trados{
     private ProjectTemplate $projectTemplate;
     private PublicKeys $publicKeys;
     private SourceFile $sourceFile;
+    private User $user;
     private Workflow $workflow;
 
     private Logger $logger;
@@ -114,6 +116,7 @@ class Trados{
         $this->projectTemplate = new ProjectTemplate($this);
         $this->publicKeys = new PublicKeys($this);
         $this->sourceFile = new SourceFile($this);
+        $this->user = new User($this);
         $this->workflow = new Workflow($this);
     }
 
@@ -275,5 +278,13 @@ class Trados{
     public function getWorkflow():Workflow
     {
         return $this->workflow;
+    }
+
+    /**
+     * Get the value of user
+     */ 
+    public function getUser()
+    {
+        return $this->user;
     }
 }
