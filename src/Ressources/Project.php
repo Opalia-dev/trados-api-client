@@ -14,7 +14,7 @@ Class Project{
         return $this->client->get('projects');
     }
 
-    public function get(int $projectId, string $fields = null)
+    public function get(string $projectId, string $fields = null)
     {
         if($fields !==null){
             return $this->client->get('projects/'.$projectId,[
@@ -26,22 +26,22 @@ Class Project{
         return $this->client->get('projects/'.$projectId);
     }
 
-    public function delete(int $projectId)
+    public function delete(string $projectId)
     {
         return $this->client->delete('projects/'.$projectId);
     }
 
-    public function start(int $projectId)
+    public function start(string $projectId)
     {
         return $this->client->put('projects/'.$projectId.'/start');
     }
 
-    public function complete(int $projectId)
+    public function complete(string $projectId)
     {
         return $this->client->put('projects/'.$projectId.'/complete');
     }
 
-    public function cancelFile(int $projectId,int $fileId)
+    public function cancelFile(string $projectId,int $fileId)
     {
         return $this->client->put('projects/'.$projectId.'/files/'.$fileId.'/cancel');
     }
@@ -58,7 +58,7 @@ Class Project{
         return $this->client->post('projects',$params);
     }
 
-    public function getConfig(int $projectId, string $fields = null)
+    public function getConfig(string $projectId, string $fields = null)
     {
         if($fields !==null){
             return $this->client->get('projects/'.$projectId,[
@@ -70,12 +70,12 @@ Class Project{
         return $this->client->get('projects/'.$projectId.'/configuration');
     }
 
-    public function updateConfig(int $projectId, array $body)
+    public function updateConfig(string $projectId, array $body)
     {
         return $this->client->get('projects/'.$projectId.'/configuration',['json'=>$body]);
     }
 
-    public function getTasks(int $projectId, string $fields = null,array $location = null, string $locationStrategy = null,int $skip = null,string $sort = null, int $top = null)
+    public function getTasks(string $projectId, string $fields = null,array $location = null, string $locationStrategy = null,int $skip = null,string $sort = null, int $top = null)
     {
         $params = [];
         if($fields !==null){
