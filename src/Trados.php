@@ -5,19 +5,27 @@ use Monolog\Logger;
 use GuzzleHttp\Client;
 use Monolog\Handler\StreamHandler;
 use Opalia\TradosApiClient\Ressources\File;
+use Opalia\TradosApiClient\Ressources\Task;
+use Opalia\TradosApiClient\Ressources\User;
 use Opalia\TradosApiClient\Ressources\Group;
+use Opalia\TradosApiClient\Ressources\Quote;
 use Opalia\TradosApiClient\Ressources\Folder;
 use Opalia\TradosApiClient\Ressources\Account;
 use Opalia\TradosApiClient\Ressources\Project;
 use Opalia\TradosApiClient\Ressources\Customer;
 use Opalia\TradosApiClient\Ressources\Language;
+use Opalia\TradosApiClient\Ressources\TaskType;
+use Opalia\TradosApiClient\Ressources\Workflow;
 use Opalia\TradosApiClient\Ressources\PublicKeys;
 use Opalia\TradosApiClient\Ressources\SourceFile;
+use Opalia\TradosApiClient\Ressources\TargetFile;
+use Opalia\TradosApiClient\Ressources\TQAProfile;
 use Opalia\TradosApiClient\Ressources\CustomField;
 use Opalia\TradosApiClient\Ressources\PricingModel;
 use Opalia\TradosApiClient\Ressources\ProjectTemplate;
+use Opalia\TradosApiClient\Ressources\TranslationEngine;
+use Opalia\TradosApiClient\Ressources\TranslationMemoryImport;
 use Opalia\TradosApiClient\Ressources\FileProcessingConfiguration;
-use Opalia\TradosApiClient\Ressources\Workflow;
 
 class Trados{
     private ?string $token = null;
@@ -37,7 +45,15 @@ class Trados{
     private Project $project;
     private ProjectTemplate $projectTemplate;
     private PublicKeys $publicKeys;
+    private Quote $quote;
     private SourceFile $sourceFile;
+    private TargetFile $targetFile;
+    private Task $task;
+    private TaskType $taskType;
+    private TQAProfile $tqaProfile;
+    private TranslationEngine $translationEngine;
+    private TranslationMemoryImport $translationMemoryImport;
+    private User $user;
     private Workflow $workflow;
 
     private Logger $logger;
@@ -113,7 +129,15 @@ class Trados{
         $this->project = new Project($this);
         $this->projectTemplate = new ProjectTemplate($this);
         $this->publicKeys = new PublicKeys($this);
+        $this->quote = new Quote($this);
         $this->sourceFile = new SourceFile($this);
+        $this->targetFile = new TargetFile($this);
+        $this->task = new Task($this);
+        $this->taskType = new TaskType($this);
+        $this->tqaProfile= new TQAProfile($this);
+        $this->translationEngine = new TranslationEngine($this);
+        $this->translationMemoryImport = new TranslationMemoryImport($this);
+        $this->user = new User($this);
         $this->workflow = new Workflow($this);
     }
 
@@ -275,5 +299,69 @@ class Trados{
     public function getWorkflow():Workflow
     {
         return $this->workflow;
+    }
+
+    /**
+     * Get the value of user
+     */ 
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Get the value of translationMemoryImport
+     */ 
+    public function getTranslationMemoryImport()
+    {
+        return $this->translationMemoryImport;
+    }
+
+    /**
+     * Get the value of targetFile
+     */ 
+    public function getTargetFile()
+    {
+        return $this->targetFile;
+    }
+
+    /**
+     * Get the value of task
+     */ 
+    public function getTask()
+    {
+        return $this->task;
+    }
+
+    /**
+     * Get the value of taskType
+     */ 
+    public function getTaskType()
+    {
+        return $this->taskType;
+    }
+
+    /**
+     * Get the value of tqaProfile
+     */ 
+    public function getTqaProfile()
+    {
+        return $this->tqaProfile;
+    }
+
+    /**
+     * Get the value of translationEngine
+     */ 
+    public function getTranslationEngine()
+    {
+        return $this->translationEngine;
+    }
+
+    /**
+     * Get the value of quote
+     */ 
+    public function getQuote()
+    {
+        return $this->quote;
     }
 }
