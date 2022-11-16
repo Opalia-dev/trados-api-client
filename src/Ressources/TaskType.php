@@ -18,7 +18,7 @@ Class TaskType{
         return $this->client->get('task-types/'.$taskTypeId,$params);
     }
 
-    public function list(?bool $automatic = null,?string $fields = null,?array $key = null,?array $location = null,?string $locationStrategy = null,?int $skip = null,?string $sort = null,?int $top = null)
+    public function list(?bool $automatic = null,?string $fields = null,?array $key = null,?string $location = null,?string $locationStrategy = null,?int $skip = null,?string $sort = null,?int $top = null)
     {
         $params = [];
         if($automatic!==null){

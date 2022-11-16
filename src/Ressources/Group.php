@@ -18,7 +18,7 @@ Class Group{
         return $this->client->get('groups/'.$groupId,$params);
     }
 
-    public function list(string $fields = null,array $location = null, string $locationStrategy = null,int $skip = null,string $sort = null, int $top = null)
+    public function list(string $fields = null,string $location = null, string $locationStrategy = null,int $skip = null,string $sort = null, int $top = null)
     {
         $params = [];
         if($fields !==null){

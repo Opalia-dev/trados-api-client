@@ -75,7 +75,7 @@ Class Project{
         return $this->client->get('projects/'.$projectId.'/configuration',['json'=>$body]);
     }
 
-    public function getTasks(string $projectId, string $fields = null,array $location = null, string $locationStrategy = null,int $skip = null,string $sort = null, int $top = null)
+    public function getTasks(string $projectId, string $fields = null,string $location = null, string $locationStrategy = null,int $skip = null,string $sort = null, int $top = null)
     {
         $params = [];
         if($fields !==null){

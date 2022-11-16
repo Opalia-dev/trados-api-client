@@ -18,7 +18,7 @@ Class ProjectTemplate{
         return $this->client->get('project-templates/'.$projectTemplateId,$params);
     }
 
-    public function list(string $name = null,string $fields = null,array $location = null, string $locationStrategy = null,int $skip = null,string $sort = null, int $top = null)
+    public function list(string $name = null,string $fields = null,string $location = null, string $locationStrategy = null,int $skip = null,string $sort = null, int $top = null)
     {
         $params = [];
 

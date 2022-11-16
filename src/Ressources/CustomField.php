@@ -9,7 +9,7 @@ Class CustomField{
     public function __construct(private Trados $client)
     {}
 
-    public function listDefinitions(string $fields = null,array $location = null, string $locationStrategy = null,int $skip = null,string $sort = null, int $top = null)
+    public function listDefinitions(string $fields = null,string $location = null, string $locationStrategy = null,int $skip = null,string $sort = null, int $top = null)
     {
         $params = [];
         if($fields !==null){
