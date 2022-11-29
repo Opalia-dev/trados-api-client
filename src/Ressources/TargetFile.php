@@ -49,4 +49,12 @@ Class TargetFile{
         }
         return $this->client->get('projects/'.$projectId.'/target-files/'.$targetFileId.'/versions',$params);
     }
+
+    public function downloadVersion(string $projectId,string $targetFileId,string $fileVersionId)
+    {
+        $tmpFile = \tempnam(\sys_get_temp_dir(), $targetFileId);
+        $params = ['sink'=>$tmpFile];
+        $this->client->get('projects/'.$projectId.'/target-files/'.$targetFileId.'/versions/'.$fileVersionId.'/download',$params);
+        return $tmpFile;
+    }
 }
