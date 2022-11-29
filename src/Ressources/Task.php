@@ -18,7 +18,7 @@ Class Task{
         return $this->client->get('tasks/'.$taskId,$params);
     }
 
-    public function listAssignedToMe(string $fields = null,string $location = null, string $locationStrategy = null,int $skip = null,string $sort = null, string $status = null, int $top = null)
+    public function listAssignedToMe(string $fields = null,array $location = null, string $locationStrategy = null,int $skip = null,string $sort = null, string $status = null, int $top = null)
     {
         $params = [];
         if($fields !==null){

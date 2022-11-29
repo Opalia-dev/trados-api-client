@@ -9,9 +9,31 @@ Class Project{
     public function __construct(private Trados $client)
     {}
 
-    public function list()
+    public function list(?bool $excludeOnline = null,?string $fields = null,?string $location = null,?string $locationStrategy = null,?int $skip = null,?string $sort = null,?int $top = null)
     {
-        return $this->client->get('projects');
+        $params = [];
+        if($excludeOnline){
+            $params['query']['excludeOnline'] = $excludeOnline;
+        }
+        if($fields){
+            $params['query']['fields'] = $fields;
+        }
+        if($location){
+            $params['query']['location']=$location;
+        }
+        if($locationStrategy){
+            $params['query']['locationStrategy']=$locationStrategy;
+        }
+        if($skip){
+            $params['query']['skip']=$skip;
+        }
+        if($sort){
+            $params['query']['sort']=$sort;
+        }
+        if($top!==null){
+            $params['query']['top']=$top;
+        }
+        return $this->client->get('projects',$params);
     }
 
     public function get(string $projectId, string $fields = null)
@@ -75,7 +97,7 @@ Class Project{
         return $this->client->get('projects/'.$projectId.'/configuration',['json'=>$body]);
     }
 
-    public function getTasks(string $projectId, string $fields = null,string $location = null, string $locationStrategy = null,int $skip = null,string $sort = null, int $top = null)
+    public function getTasks(string $projectId, string $fields = null,array $location = null, string $locationStrategy = null,int $skip = null,string $sort = null, int $top = null)
     {
         $params = [];
         if($fields !==null){

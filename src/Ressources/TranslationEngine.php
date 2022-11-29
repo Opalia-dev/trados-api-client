@@ -18,7 +18,7 @@ Class TranslationEngine{
         return $this->client->get('translation-engines/'.$translationEngineId,$params);
     }
 
-    public function list(?string $fields = null,?string $location = null,?string $locationStrategy = null,?int $skip = null,?string $sort = null,?int $top = null)
+    public function list(?string $fields = null,?array $location = null,?string $locationStrategy = null,?int $skip = null,?string $sort = null,?int $top = null)
     {
         $params = [];
         if($fields !==null){
